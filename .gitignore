@@ -1,0 +1,6 @@
+lesson2/bot_v2/topSecret.py
+lesson2/bot_v2/bot.log
+lesson1/mybot/topSecret.py
+*.pyc
+lesson1/mybot/.idea
+lesson1/mybot/bot.log
