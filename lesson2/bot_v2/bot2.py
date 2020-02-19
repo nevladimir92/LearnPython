@@ -24,6 +24,7 @@ def talk_to_me(bot, update):
 
 
 def get_constellation(bot, update):
+    # возможно есть более эффективные методы, кроме словаря. Нужно поискать
     planets = {"Mars": ephem.Mars(),
                'Venus': ephem.Venus(),
                'Mercury': ephem.Mercury(),
@@ -36,14 +37,14 @@ def get_constellation(bot, update):
                'Pluto': ephem.Pluto()}
 
     planet_name = update.message.text.split()[1]
-    logging.info("Planet: {}".format(update.message.text.split()[1]))
     if planet_name in planets:
         m = planets[planet_name]
+        logging.info("User {}. Command: /planet {}".format(update.message.chat.username, planet_name))
         m.compute(datetime.datetime.now())
         reply = "В данный момент {} находится в созвездии {}.".format(planet_name, ephem.constellation(m)[1])
         update.message.reply_text(reply)
     else:
-        update.message.reply_text("Введите название планеты солнечной системы!")
+        update.message.reply_text("Введите название объекта солнечной системы!")
 
 
 def main():
